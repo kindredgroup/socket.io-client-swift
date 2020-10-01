@@ -23,16 +23,15 @@
 //  THE SOFTWARE.
 
 import Foundation
-import Starscream
 
 /// A wrapper around Starscream's SSLSecurity that provides a minimal Objective-C interface.
 open class SSLSecurity : NSObject {
     // MARK: Properties
 
     /// The internal Starscream SSLSecurity.
-    public let security: Starscream.SSLSecurity
+    public let security: StarscreamSSLSecurity
 
-    init(security: Starscream.SSLSecurity) {
+    init(security: StarscreamSSLSecurity) {
         self.security = security
     }
 
@@ -45,7 +44,7 @@ open class SSLSecurity : NSObject {
     /// validation
     @objc
     public convenience init(usePublicKeys: Bool = true) {
-        let security = Starscream.SSLSecurity(usePublicKeys: usePublicKeys)
+        let security = StarscreamSSLSecurity(usePublicKeys: usePublicKeys)
         self.init(security: security)
     }
 
@@ -57,7 +56,7 @@ open class SSLSecurity : NSObject {
     /// validation
     /// - returns: a representation security object to be used with
     public convenience init(certs: [SSLCert], usePublicKeys: Bool) {
-        let security = Starscream.SSLSecurity(certs: certs, usePublicKeys: usePublicKeys)
+        let security = StarscreamSSLSecurity(certs: certs, usePublicKeys: usePublicKeys)
         self.init(security: security)
     }
 
